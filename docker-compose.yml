@@ -1,0 +1,30 @@
+
+services:
+  odoo:
+    image: odoo:17
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3532:8069"
+      - "9213:8072"
+    tty: true
+    command: odoo
+    volumes:
+      - data:/var/lib/odoo
+      - ./custom_modules:/mnt/extra-addons
+      - ./etc:/etc/odoo
+  db:
+    image: postgres:16
+    command: postgres -c 'max_connections=300'
+    ports:
+      - "4823:5432"
+    environment:
+      - POSTGRES_PASSWORD=gaweanCintaAllah123!
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+volumes:
+  data:
+  postgresql:

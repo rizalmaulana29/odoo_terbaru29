@@ -1,0 +1,11 @@
+<odoo>
+    <menuitem id="menu_biodata_root" name="Biodata" sequence="10"/>
+
+    <menuitem id="menu_biodata" name="Biodata" parent="menu_biodata_root" action="action_biodata"/>
+
+    <record id="action_biodata" model="ir.actions.act_window">
+        <field name="name">Biodata</field>
+        <field name="res_model">biodata</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
